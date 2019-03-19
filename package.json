@@ -1,0 +1,100 @@
+{
+  "name": "CHANGE_ME",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js",
+    "lint": "eslint ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^5.15.3",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "jest": "^24.5.0",
+    "prettier": "^1.16.4",
+    "stylelint": "^9.10.1"
+  },
+  "jest": {
+    "transformIgnorePatterns": [],
+    "verbose": false,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "json-summary"
+    ],
+    "roots": [
+      "src"
+    ],
+    "testURL": "http://localhost"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm test"
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": false,
+      "node": true
+    },
+    "plugins": [
+      "prettier"
+    ],
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 5,
+      "sourceType": "module"
+    },
+    "globals": {
+      "expect": false,
+      "describe": false,
+      "beforeEach": false,
+      "it": false,
+      "angular": false,
+      "test": false
+    },
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  },
+  "eslintIgnore": [
+    "dist/",
+    "coverage/",
+    "node_modules/",
+    "build/"
+  ],
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-idiomatic-order"
+    ],
+    "rules": {
+      "selector-type-no-unknown": [
+        true,
+        {
+          "ignore": [
+            "custom-elements"
+          ]
+        }
+      ]
+    },
+    "ignoreFiles": [
+      "lib/*"
+    ]
+  }
+}
